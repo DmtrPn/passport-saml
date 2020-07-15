@@ -10,6 +10,8 @@ The code was originally based on Michael Bosworth's [express-saml](https://githu
 
 Passport-SAML has been tested to work with Onelogin, Okta, Shibboleth, [SimpleSAMLphp](http://simplesamlphp.org/) based Identity Providers, and with [Active Directory Federation Services](http://en.wikipedia.org/wiki/Active_Directory_Federation_Services).
 
+In this fork fixed bag when authorize with GSuite ([when one of my users if logged in with his/her personal account only](https://stackoverflow.com/questions/58223843/google-saml-sso-403-app-not-configured-for-user-error-when-signed-into-persona))
+
 ## Installation
 
     $ npm install passport-saml
@@ -118,6 +120,11 @@ type Profile = {
   * `signatureAlgorithm`: optionally set the signature algorithm for signing requests, valid values are 'sha1' (default), 'sha256', or 'sha512'
   * `digestAlgorithm`: optionally set the digest algorithm used to provide a digest for the signed data object, valid values are 'sha1' (default), 'sha256', or 'sha512'
   * `xmlSignatureTransforms`: optionally set an array of signature transforms to be used in HTTP-POST signatures. By default this is `[ 'http://www.w3.org/2000/09/xmldsig#enveloped-signature', 'http://www.w3.org/2001/10/xml-exc-c14n#' ]`
+  
+ * **For auth with GSuite**
+ * `googleAuth`: if set true, at authorization redirect to google account choose page  [to fix a bag when one of my users if logged in with his/her personal account only](https://stackoverflow.com/questions/58223843/google-saml-sso-403-app-not-configured-for-user-error-when-signed-into-persona)
+ * `googleAccountChooserUrl`: google account chooser page url. Default  `https://accounts.google.com/AccountChooser`  
+ 
  * **Additional SAML behaviors**
   * `additionalParams`: dictionary of additional query params to add to all requests; if an object with this key is passed to `authenticate`, the dictionary of additional query params will be appended to those present on the returned URL, overriding any specified by initialization options' additional parameters (`additionalParams`, `additionalAuthorizeParams`, and `additionalLogoutParams`)
   * `additionalAuthorizeParams`: dictionary of additional query params to add to 'authorize' requests
