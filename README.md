@@ -14,7 +14,7 @@ In this fork fixed bag when authorize with GSuite ([when one of my users if logg
 
 ## Installation
 
-    $ npm install passport-saml
+    $ yarn add https://github.com/DmtrPn/passport-saml
 
 ## Usage
 
